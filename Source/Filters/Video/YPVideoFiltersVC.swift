@@ -145,6 +145,9 @@ public class YPVideoFiltersVC: UIViewController, IsMediaFilterVC {
                         } else {
                             print("YPVideoFiltersVC -> Don't have coverImage.")
                         }
+                        
+                        guard let self = self else { return }
+                        try? FileManager.default.removeItem(at: self.inputVideo.url)
                     }
                 case .failed:
                     print("YPVideoFiltersVC Export of the video failed. Reason: \(String(describing: session.error))")
